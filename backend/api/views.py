@@ -1,4 +1,4 @@
-import fitz  # PyMuPDF
+import fitz  
 import logging
 from django.shortcuts import render
 
