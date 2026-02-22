@@ -1,8 +1,6 @@
 import fitz  
 import logging
 from django.shortcuts import render
-
-# Create your views
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import default_storage
@@ -12,7 +10,6 @@ import json
 from django.conf import settings
 from dotenv import load_dotenv
 import google.generativeai as genai
-
 from .models import Quiz
 
 def extract_pdf_text(file):
