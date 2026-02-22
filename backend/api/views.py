@@ -7,8 +7,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import default_storage
 import google.generativeai as genai
-
-
 import os
 import json
 from django.conf import settings
