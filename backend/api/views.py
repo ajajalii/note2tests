@@ -23,7 +23,7 @@ def extract_pdf_text(file):
 
 def generate_quiz_from_text(text):
     """Uses Gemini API to generate a quiz JSON from text."""
-    model = genai.GenerativeModel("gemini-2.0-flash-exp")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     prompt = f"""
     Generate a JSON quiz from this text. 
     Format:
