@@ -310,7 +310,10 @@ const LandingPage = () => {
                  <li className="hover:text-white cursor-pointer transition-colors" onClick={() => navigate('/about')}>
                    About
                  </li>
-                 <li className="hover:text-white cursor-pointer transition-colors" onClick={() => navigate('/upload')}>
+                 <li
+                   className="hover:text-white cursor-pointer transition-colors"
+                   onClick={() => navigate(user ? '/upload' : '/')}
+                 >
                    Create Quiz
                  </li>
                  {user && (
