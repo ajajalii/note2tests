@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import logo from '../assets/notetotest.png';
 
 const Navbar = ({ user, handleLogout }) => {
   const navigate = useNavigate();
@@ -16,18 +17,17 @@ const Navbar = ({ user, handleLogout }) => {
 
   return (
     <nav className="bg-white shadow-md relative">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-2">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <h1
-            onClick={() => {
-              navigate('/');
-              closeMenu();
-            }}
-            className="text-2xl font-bold text-blue-600 cursor-pointer"
-          >
-            Note2Test
-          </h1>
+          <div className="h-12 w-36 overflow-hidden rounded-sm cursor-pointer" onClick={() => { navigate('/'); closeMenu(); }}>
+            <img
+              src={logo}
+              alt="Note2Test"
+              className="h-full w-full object-cover scale-190 mt-1.5"
+              draggable={false}
+            />
+          </div>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-8 text-gray-600 font-medium items-center">
