@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   FaUpload, 
   FaRobot, 
@@ -23,6 +23,7 @@ import Navbar from '../components/Navbar';
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -31,6 +32,9 @@ const LandingPage = () => {
       setUser(JSON.parse(savedUser));
     }
   }, []);
+
+  const searchParams = new URLSearchParams(location.search);
+  const fromGetStarted = searchParams.get('from') === 'get-started';
 
   const handleLogout = () => {
     setUser(null);
@@ -157,7 +161,7 @@ const LandingPage = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 {!user ? (
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <GoogleLogin onLoginSuccess={handleLoginSuccess} />
+                    <GoogleLogin onLoginSuccess={handleLoginSuccess} autoPrompt={fromGetStarted} />
                     
                   </div>
                 ) : (
@@ -267,7 +271,7 @@ const LandingPage = () => {
                Start creating AI-powered quizzes from your study materials today.
              </p>
              {!user ? (
-               <GoogleLogin onLoginSuccess={handleLoginSuccess} />
+              <GoogleLogin onLoginSuccess={handleLoginSuccess} />
              ) : (
                <button
                  onClick={() => navigate('/upload')}
@@ -312,7 +316,7 @@ const LandingPage = () => {
                  </li>
                  <li
                    className="hover:text-white cursor-pointer transition-colors"
-                   onClick={() => navigate(user ? '/upload' : '/')}
+                   onClick={() => navigate(user ? '/upload' : '/?from=get-started')}
                  >
                    Create Quiz
                  </li>

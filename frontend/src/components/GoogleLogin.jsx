@@ -1,7 +1,7 @@
 
 import React, { useEffect, useCallback } from 'react';
 
-export default function GoogleLogin({ onLoginSuccess }) {
+export default function GoogleLogin({ onLoginSuccess, autoPrompt = false }) {
   // Credential handler defined before useEffect
   const handleCredentialResponse = useCallback(async (response) => {
     const idToken = response.credential;
@@ -40,12 +40,13 @@ export default function GoogleLogin({ onLoginSuccess }) {
         { theme: 'outline', size: 'large' }
       );
 
-      // Optional: prompt automatically (One Tap)
-      // window.google.accounts.id.prompt();
+      if (autoPrompt) {
+        window.google.accounts.id.prompt();
+      }
     } else {
       console.warn('Google API not loaded yet.');
     }
-  }, [handleCredentialResponse]);
+  }, [handleCredentialResponse, autoPrompt]);
 
   return <div id="google-signin-button"></div>;
 }

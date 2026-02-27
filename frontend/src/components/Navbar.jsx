@@ -58,13 +58,7 @@ const Navbar = ({ user, handleLogout }) => {
               <li>
                 <button
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                  onClick={() => {
-                    if (user) {
-                      navigate('/upload');
-                    } else {
-                      navigate('/');
-                    }
-                  }}
+                  onClick={() => navigate('/?from=get-started')}
                 >
                   Get Started
                 </button>
@@ -141,11 +135,7 @@ const Navbar = ({ user, handleLogout }) => {
                 <li>
                   <button
                     onClick={() => {
-                      if (user) {
-                        navigate('/upload');
-                      } else {
-                        navigate('/');
-                      }
+                      navigate('/?from=get-started');
                       closeMenu();
                     }}
                     className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
