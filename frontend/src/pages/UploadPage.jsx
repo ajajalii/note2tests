@@ -383,9 +383,9 @@ export default function UploadPage() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>support@note2test.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Learning St, Education City</li>
+                <li>ajaj4269@gmail.com</li>
+                <li>+91 70795 53517</li>
+                <li>133207, Mullana, Haryana, India</li>
               </ul>
             </div>
           </div>
