@@ -11,11 +11,11 @@ import {
   FaEnvelope,
   FaUsers,
   FaGraduationCap,
-  FaLightbulb,
   FaShieldAlt,
   FaStar,
   FaArrowRight
 } from "react-icons/fa";
+import note2testLogo from "../assets/note2test_logo.png";
 import Navbar from "../components/Navbar";
 
 export default function AboutPage() {
@@ -118,8 +118,12 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-8">
-            <FaLightbulb className="w-12 h-12 text-white" />
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-full mb-8 overflow-hidden shadow-lg">
+            <img
+              src={note2testLogo}
+              alt="Note2Test logo"
+              className="w-16 h-16 object-contain"
+            />
           </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Note2Test</span>
