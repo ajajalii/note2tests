@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 from .models import Quiz
 
+
+
 def extract_pdf_text(file):
     """Reads a PDF file and returns its text."""
     doc = fitz.open(stream=file.read(), filetype="pdf")
