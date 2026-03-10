@@ -9,17 +9,13 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-8%e!42f5#%oii9qwpleks!=wp1xy9dzc1hnprqyuo553%i%(q('
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "note2tests.onrender.com",  # your backend
+    "note2tests.onrender.com",  # backend
     "localhost",                # for local dev
     "127.0.0.1"
 ]
