@@ -1,15 +1,10 @@
 import os
-
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-
-
 from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-##₹
+
 SECRET_KEY = 'django-insecure-8%e!42f5#%oii9qwpleks!=wp1xy9dzc1hnprqyuo553%i%(q('
 
 DEBUG = False
