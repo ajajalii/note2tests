@@ -109,7 +109,8 @@ const Navbar = ({ user }) => {
             <button
               type="button"
               onClick={() => goTo(ctaPath)}
-              className="group flex h-11 items-center gap-3 rounded-2xl bg-[#141418] px-5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800"
+              // className="group flex h-11 items-center gap-3 rounded-[8px] bg-[#141418] px-5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800"
+              className="group flex h-11 items-center gap-3 rounded-[8px] bg-[#141418] px-5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.58),0_10px_24px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800"
             >
               <span>{ctaLabel}</span>
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/12 transition-colors duration-300 group-hover:bg-white/20">

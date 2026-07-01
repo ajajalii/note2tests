@@ -20,6 +20,7 @@ import {
 } from 'react-icons/fa';
 import GoogleLogin from '../components/GoogleLogin';
 import Navbar from '../components/Navbar';
+import heroBg from '../assets/hero-bg.jpg';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -121,25 +122,41 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <div className="pointer-events-none absolute left-1/2 top-0 z-0 h-[340px] w-[min(1180px,100vw)] -translate-x-1/2 overflow-hidden">
+        <img
+          src={heroBg}
+          alt=""
+          className="h-full w-full object-cover object-center opacity-70 blur-[1px] saturate-125"
+          style={{
+            maskImage:
+              'linear-gradient(to bottom, black 0%, black 50%, transparent 100%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to bottom, black 0%, black 50%, transparent 100%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)',
+            maskComposite: 'intersect',
+            WebkitMaskComposite: 'source-in',
+          }}
+        />
+        <div className="absolute inset-0 bg-white/25" />
+      </div>
       <Navbar user={user} handleLogout={handleLogout} />
 
       {/* Hero Section */}
-      <section className="pt-13 pb-16 px-6">
+      <section className="relative z-10 pt-13 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
-              <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
-                <FaLightbulb className="w-4 h-4 mr-2" />
-                AI-Powered Learning Platform
+              <div className="mb-6 inline-flex max-w-full items-center gap-3 rounded-full border border-white/80 bg-white/55 py-1 pl-1 pr-5 text-sm font-semibold text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_18px_50px_rgba(15,23,42,0.12)] ring-1 ring-white/50 backdrop-blur-xl">
+                <span className="rounded-full bg-gradient-to-b from-red-400 to-red-600 px-3 py-1 text-xs font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_14px_rgba(239,68,68,0.32)]">
+                  New
+                </span>
+                <span className="truncate text-sm">AI-Powered Learning Platform</span>
               </div>
               
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              <h1 className="mb-6 max-w-4xl text-5xl font-black leading-[0.95] text-[#101014] sm:text-6xl lg:text-7xl">
                 Turn Your Notes into{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                  Interactive Tests
-                </span>
+                <span className="italic font-black">Interactive Tests</span>
               </h1>
               
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -167,10 +184,12 @@ const LandingPage = () => {
                 ) : (
                   <button
                     onClick={() => navigate('/upload')}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center space-x-2"
+                    className="group flex h-13 items-center gap-3 rounded-[8px] bg-[#141418] px-6 text-base font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg"
                   >
                     <span>Start Creating Quizzes</span>
-                    <FaArrowRight className="w-5 h-5" />
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/12 transition-colors duration-300 group-hover:bg-white/20">
+                      <FaArrowRight className="h-4 w-4" />
+                    </span>
                   </button>
                 )}
               </div>
