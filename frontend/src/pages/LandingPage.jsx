@@ -187,7 +187,7 @@ const LandingPage = () => {
                     onClick={() => navigate('/upload')}
                     className="group flex h-13 items-center gap-3 rounded-[8px] bg-[#141418] px-6 text-base font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg"
                   >
-                    <span>Start Creating Quizzes</span>
+                    <span>Start Creating Tests</span>
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/12 transition-colors duration-300 group-hover:bg-white/20">
                       <FaArrowRight className="h-4 w-4" />
                     </span>
