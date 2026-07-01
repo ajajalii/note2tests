@@ -1,9 +1,29 @@
 @import "tailwindcss";
-/* Hide scrollbar for Chrome, Safari and Opera */
+
+/* Hide scrollbar */
 div::-webkit-scrollbar {
   display: none;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
-div::-webkit-scrollbar {
-  display: none;
+
+/* ------------------ */
+/* Marquee Animations */
+/* ------------------ */
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(calc(-100% - 1rem));
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.group:hover .group-hover\:paused {
+  animation-play-state: paused;
 }

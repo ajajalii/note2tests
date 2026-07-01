@@ -21,6 +21,7 @@ import {
 import GoogleLogin from '../components/GoogleLogin';
 import Navbar from '../components/Navbar';
 import heroBg from '../assets/hero-bg.jpg';
+import Testimonials from "../components/Testimonials";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -208,33 +209,7 @@ const LandingPage = () => {
             </div>
 
                          {/* Right Content - Testimonials */}
-             <div className="relative animate-[float_6s_ease-in-out_infinite]">
-               {/* Decoration */}
-               <div className="absolute w-full aspect-[4/3] bg-gradient-to-br from-[#818cf8] to-[#38bdf8] rounded-3xl opacity-10 -z-10 translate-x-[1%] top-[10%]"></div>
-               
-               {/* Testimonials Grid */}
-               {/* Testimonials Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-8 bg-white rounded-3xl shadow-2xl">
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="bg-[#fafafa] p-6 rounded-2xl flex flex-col gap-4 transition-transform duration-200 hover:-translate-y-1">
-                    <div className="flex items-center gap-4">
-                      <img 
-                        src={testimonial.avatar} 
-                        alt={testimonial.name} 
-                        className="w-12 h-12 rounded-full object-cover border-2 border-[#4f46e5]"
-                      />
-                      <div className="flex-1">
-                        <div className="font-semibold text-gray-900 text-base">{testimonial.name}</div>
-                        <div className="text-gray-600 text-sm">{testimonial.role}</div>
-                      </div>
-                    </div>
-                    <div className="text-gray-600 text-sm leading-relaxed relative pl-4 border-l-2 border-[#4f46e5]">
-                      "{testimonial.content}"
-                    </div>
-                  </div>
-                ))}
-              </div>
-             </div>
+             <Testimonials testimonials={testimonials} />
           </div>
         </div>
       </section>
