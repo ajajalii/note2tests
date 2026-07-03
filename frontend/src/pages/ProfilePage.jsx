@@ -172,8 +172,8 @@ export default function ProfilePage() {
 
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                  <FaQuestionCircle className="w-5 h-5 text-purple-600" />
+                <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center mr-3">
+                  <FaQuestionCircle className="w-5 h-5 text-sky-700" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Total Questions</p>

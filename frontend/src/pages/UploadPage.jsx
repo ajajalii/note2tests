@@ -134,13 +134,13 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-slate-50">
       <Navbar user={user} handleLogout={handleLogout} />
 
       <div className="max-w-4xl mx-auto px-6 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-6">
             <Sparkles className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -208,7 +208,7 @@ export default function UploadPage() {
                     </p>
                     <button
                       onClick={() => fileInputRef.current?.click()}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                      className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
                     >
                       Choose File
                     </button>
@@ -264,7 +264,7 @@ export default function UploadPage() {
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
+                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                       style={{ width: `${uploadProgress}%` }}
                     ></div>
                   </div>
@@ -279,7 +279,7 @@ export default function UploadPage() {
                 <div className="mt-6 text-center">
                   <button
                     onClick={handleUpload}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center space-x-2 mx-auto"
+                    className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center space-x-2 mx-auto"
                   >
                     <Sparkles className="w-5 h-5" />
                     <span>Generate Quiz</span>
@@ -313,8 +313,8 @@ export default function UploadPage() {
           </div>
 
           <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-6 h-6 text-purple-600" />
+            <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="w-6 h-6 text-slate-600" />
             </div>
             <h3 className="font-semibold text-gray-900 mb-2">Instant Results</h3>
             <p className="text-gray-600 text-sm">

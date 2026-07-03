@@ -56,25 +56,29 @@ const LandingPage = () => {
       icon: FaUpload,
       title: "Easy Upload",
       description: "Upload PDF, DOC, or DOCX files with our intuitive drag-and-drop interface",
-      color: "blue"
+      bgClass: "bg-blue-100",
+      iconClass: "text-blue-600"
     },
     {
       icon: FaRobot,
       title: "AI-Powered",
       description: "Advanced AI generates relevant questions from your study materials",
-      color: "green"
+      bgClass: "bg-green-100",
+      iconClass: "text-green-600"
     },
     {
       icon: FaChartLine,
       title: "Track Progress",
       description: "Monitor your performance and identify areas for improvement",
-      color: "purple"
+      bgClass: "bg-sky-100",
+      iconClass: "text-sky-700"
     },
     {
       icon: FaBookReader,
       title: "Interactive Learning",
       description: "Engage with your material through fun, interactive quizzes",
-      color: "indigo"
+      bgClass: "bg-slate-100",
+      iconClass: "text-slate-700"
     }
   ];
 
@@ -122,7 +126,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50">
       <div className="pointer-events-none absolute left-1/2 top-0 z-0 h-[340px] w-[min(1180px,100vw)] -translate-x-1/2 overflow-hidden">
         <img
           src={heroBg}
@@ -148,7 +152,7 @@ const LandingPage = () => {
             {/* Left Content */}
             <div>
               <div className="mb-6 inline-flex max-w-full items-center gap-3 rounded-full border border-white/80 bg-white/55 py-1 pl-1 pr-5 text-sm font-semibold text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_18px_50px_rgba(15,23,42,0.12)] ring-1 ring-white/50 backdrop-blur-xl">
-                <span className="rounded-full bg-gradient-to-b from-red-400 to-red-600 px-3 py-1 text-xs font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_14px_rgba(239,68,68,0.32)]">
+                <span className="rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-[0_6px_14px_rgba(239,68,68,0.24)]">
                   New
                 </span>
                 <span className="truncate text-sm">AI-Powered Learning Platform</span>
@@ -224,7 +228,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
@@ -249,8 +253,8 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className={`w-16 h-16 bg-${feature.color}-100 rounded-full flex items-center justify-center mb-6`}>
-                  <feature.icon className={`w-8 h-8 text-${feature.color}-600`} />
+                <div className={`w-16 h-16 ${feature.bgClass} rounded-full flex items-center justify-center mb-6`}>
+                  <feature.icon className={`w-8 h-8 ${feature.iconClass}`} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
@@ -263,7 +267,7 @@ const LandingPage = () => {
              {/* CTA Section */}
        <section className="py-16 px-6">
          <div className="max-w-4xl mx-auto text-center">
-           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+           <div className="bg-slate-950 rounded-2xl p-12 text-white">
              <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Learning?</h2>
              <p className="text-xl mb-8 opacity-90">
                Start creating AI-powered quizzes from your study materials today.

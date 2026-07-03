@@ -182,7 +182,7 @@ export default function QuizPage() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div 
-                className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
+                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${getProgressPercentage()}%` }}
               ></div>
             </div>
@@ -262,7 +262,7 @@ export default function QuizPage() {
                     {/* Question Header */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-2 sm:space-x-3">
-                        <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                        <span className="bg-blue-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                           Q{qIdx + 1}
                         </span>
                         {isQuestionAnswered(qIdx) && (
@@ -366,7 +366,7 @@ export default function QuizPage() {
                     className={`w-full py-3 px-6 rounded-lg font-semibold text-lg transition-all duration-200 ${
                       Object.keys(answers).length === 0
                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 shadow-lg'
+                        : 'bg-blue-600 text-white hover:bg-blue-700 transform hover:scale-105 shadow-lg'
                     }`}
                   >
                     Submit Quiz
@@ -376,10 +376,10 @@ export default function QuizPage() {
 
               {/* Results */}
               {showResults && (
-                <div className="p-4 sm:p-6 border-t bg-gradient-to-r from-green-50 to-blue-50">
+                <div className="p-4 sm:p-6 border-t bg-green-50">
                   <div className="text-center">
                     <div className="mb-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full">
+                      <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-green-600 rounded-full">
                         <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -417,7 +417,7 @@ export default function QuizPage() {
                   onClick={() => scrollToQuestion(idx)}
                     className={`w-full text-left p-3 rounded-lg transition-all duration-200 flex items-center justify-between ${
                       idx === activeQuestion 
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg' 
+                        ? 'bg-blue-600 text-white shadow-lg' 
                         : isQuestionAnswered(idx)
                           ? 'bg-green-100 text-green-800 hover:bg-green-200'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -446,7 +446,7 @@ export default function QuizPage() {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div 
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
+                    className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                     style={{ width: `${getProgressPercentage()}%` }}
                   ></div>
                 </div>

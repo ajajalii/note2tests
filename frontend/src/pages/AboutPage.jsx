@@ -67,25 +67,29 @@ export default function AboutPage() {
       icon: FaUpload,
       title: "Easy Uploads",
       description: "Upload notes and documents in PDF, Word, or Docs format effortlessly with our intuitive drag-and-drop interface.",
-      color: "blue"
+      bgClass: "bg-blue-100",
+      iconClass: "text-blue-600"
     },
     {
       icon: FaRobot,
       title: "AI-Generated Quizzes",
       description: "Get instant multiple-choice questions tailored to your study material using advanced AI technology.",
-      color: "green"
+      bgClass: "bg-green-100",
+      iconClass: "text-green-600"
     },
     {
       icon: FaChartLine,
       title: "Track Progress",
       description: "Monitor your performance over time with detailed analytics and identify areas for improvement.",
-      color: "purple"
+      bgClass: "bg-sky-100",
+      iconClass: "text-sky-700"
     },
     {
       icon: FaBookReader,
       title: "Interactive Learning",
       description: "Revise and learn in a fun, engaging, and effective way with our interactive quiz platform.",
-      color: "indigo"
+      bgClass: "bg-slate-100",
+      iconClass: "text-slate-700"
     }
   ];
 
@@ -111,7 +115,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-slate-50">
       <Navbar user={user} handleLogout={handleLogout} />
 
       {/* Hero Section */}
@@ -125,7 +129,7 @@ export default function AboutPage() {
             />
           </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Note2Test</span>
+            About <span className="text-blue-700">Note2Test</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Your AI-powered study companion that transforms notes and documents into interactive quizzes, 
@@ -141,7 +145,7 @@ export default function AboutPage() {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="bg-white rounded-2xl shadow-xl p-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <stat.icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
@@ -166,8 +170,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className={`w-16 h-16 bg-${feature.color}-100 rounded-full flex items-center justify-center mb-6`}>
-                  <feature.icon className={`w-8 h-8 text-${feature.color}-600`} />
+                <div className={`w-16 h-16 ${feature.bgClass} rounded-full flex items-center justify-center mb-6`}>
+                  <feature.icon className={`w-8 h-8 ${feature.iconClass}`} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
@@ -190,7 +194,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                <div className="bg-blue-600 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">{member.avatar}</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
@@ -238,7 +242,7 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+          <div className="bg-slate-950 rounded-2xl p-12 text-white">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Learning?</h2>
             <p className="text-xl mb-8 opacity-90">
               Start creating AI-powered quizzes from your study materials today.
