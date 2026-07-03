@@ -4,6 +4,7 @@ import { Menu, X, Upload, FileText, CheckCircle, AlertCircle, Sparkles } from "l
 import Navbar from "../components/Navbar";
 import GoogleLogin from "../components/GoogleLogin";
 import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { apiFetch, clearSession } from "../lib/api";
 
 export default function UploadPage() {
   const [file, setFile] = useState(null);
@@ -18,9 +19,7 @@ export default function UploadPage() {
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    localStorage.removeItem("user");
+    clearSession();
     navigate("/");
   };
 
@@ -90,12 +89,10 @@ export default function UploadPage() {
     }, 200);
 
     try {
-      const res = await fetch(" https://note2tests.onrender.com/api/generate-quiz/", {
+      const res = await apiFetch("/api/generate-quiz/", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
         body: formData,
+        auth: true,
       });
 
       clearInterval(progressInterval);
@@ -104,7 +101,7 @@ export default function UploadPage() {
       if (!res.ok) {
         const errorText = await res.text();
         console.error("Server error:", errorText);
-        setError("Server error: " + errorText);
+        setError(res.status === 401 ? "Your session has expired. Please sign in again." : "Server error: " + errorText);
         setLoading(false);
         return;
       }

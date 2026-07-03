@@ -22,6 +22,7 @@ import GoogleLogin from '../components/GoogleLogin';
 import Navbar from '../components/Navbar';
 import heroBg from '../assets/hero-bg.jpg';
 import Testimonials from "../components/Testimonials";
+import { clearSession } from '../lib/api';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -40,9 +41,7 @@ const LandingPage = () => {
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    clearSession();
     navigate('/');
   };
 
@@ -175,12 +174,17 @@ const LandingPage = () => {
                 ))}
               </div>
 
-              {/* CTA Buttons */}
+              {/* Login Card */}
               <div className="flex flex-col sm:flex-row gap-4">
                 {!user ? (
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <GoogleLogin onLoginSuccess={handleLoginSuccess} autoPrompt={fromGetStarted} />
-                    
+                  <div className="w-full max-w-md rounded-2xl border border-white/80 bg-white/80 p-6 shadow-[0_18px_55px_rgba(15,23,42,0.12)] ring-1 ring-white/60 backdrop-blur-xl">
+                    <h2 className="mb-2 text-2xl font-bold text-slate-950">Login to start creating</h2>
+                    <p className="mb-5 text-sm leading-6 text-slate-600">
+                      Sign in with Google to upload notes, generate quizzes, and keep your tests saved to your profile.
+                    </p>
+                    <div className="flex justify-start">
+                      <GoogleLogin onLoginSuccess={handleLoginSuccess} autoPrompt={fromGetStarted} />
+                    </div>
                   </div>
                 ) : (
                   <button
@@ -265,7 +269,9 @@ const LandingPage = () => {
                Start creating AI-powered quizzes from your study materials today.
              </p>
              {!user ? (
-              <GoogleLogin onLoginSuccess={handleLoginSuccess} />
+              <div className="mx-auto flex max-w-sm justify-center rounded-xl bg-white p-4 shadow-lg">
+                <GoogleLogin onLoginSuccess={handleLoginSuccess} />
+              </div>
              ) : (
                <button
                  onClick={() => navigate('/upload')}

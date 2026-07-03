@@ -11,13 +11,14 @@ import {
   FaBook,
   FaChartBar,
   FaClock,
-  FaEdit,
+  FaSignOutAlt,
   FaFacebook,
   FaTwitter,
   FaLinkedin,
   FaEnvelope
 } from "react-icons/fa";
 import Navbar from "../components/Navbar";
+import { apiFetch, clearSession } from "../lib/api";
 
 export default function ProfilePage() {
   const [quizzes, setQuizzes] = useState([]);
@@ -28,17 +29,14 @@ export default function ProfilePage() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || null;
 
-  const token = localStorage.getItem("access_token");
-  const refreshToken = localStorage.getItem("refresh_token");
-
   const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    localStorage.removeItem("user");
+    clearSession();
     navigate("/");
   };
 
   const fetchQuizzes = async () => {
+    const token = localStorage.getItem("access_token");
+
     if (!token) {
       setError("Please log in to view your quizzes.");
       setIsLoading(false);
@@ -46,28 +44,10 @@ export default function ProfilePage() {
     }
 
     try {
-      let res = await fetch(" https://note2tests.onrender.com/api/user-quizzes/", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await apiFetch("/api/user-quizzes/", { auth: true });
 
-      if (res.status === 401 && refreshToken) {
-        const refreshRes = await fetch(
-          " https://note2tests.onrender.com/api/token/refresh/",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ refresh: refreshToken }),
-          }
-        );
-
-        if (refreshRes.ok) {
-          const data = await refreshRes.json();
-          localStorage.setItem("access_token", data.access);
-
-          res = await fetch(" https://note2tests.onrender.com/api/user-quizzes/", {
-            headers: { Authorization: `Bearer ${data.access}` },
-          });
-        }
+      if (res.status === 401) {
+        throw new Error("Your session has expired. Please sign in again.");
       }
 
       if (!res.ok) throw new Error("Failed to fetch quizzes");
@@ -91,13 +71,14 @@ export default function ProfilePage() {
 
     setLoadingDelete(quizId);
     try {
-      const res = await fetch(
-        ` https://note2tests.onrender.com/api/delete-quiz/${quizId}/`,
-        {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const res = await apiFetch(`/api/delete-quiz/${quizId}/`, {
+        method: "DELETE",
+        auth: true,
+      });
+
+      if (res.status === 401) {
+        throw new Error("Your session has expired. Please sign in again.");
+      }
 
       if (!res.ok) throw new Error("Failed to delete quiz");
 
@@ -155,13 +136,22 @@ export default function ProfilePage() {
                     <p className="text-gray-600 text-sm">{user?.email}</p>
                   </div>
                 </div>
-                <button
-                  onClick={() => navigate('/upload')}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2"
-                >
-                  <FaPlus className="w-4 h-4" />
-                  <span>New Quiz</span>
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={() => navigate('/upload')}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <FaPlus className="w-4 h-4" />
+                    <span>New Quiz</span>
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="border border-red-200 bg-red-50 text-red-700 px-4 py-2 rounded-md font-medium hover:bg-red-100 transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <FaSignOutAlt className="w-4 h-4" />
+                    <span>Logout</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -216,7 +206,26 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {quizzes.length === 0 ? (
+            {isLoading ? (
+              <div className="px-6 py-12 text-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-blue-600 mx-auto"></div>
+                <p className="mt-3 text-gray-500 text-sm">Loading your quizzes...</p>
+              </div>
+            ) : error ? (
+              <div className="px-6 py-12 text-center">
+                <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaQuestionCircle className="w-8 h-8 text-red-400" />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Unable to load quizzes</h3>
+                <p className="text-gray-600 mb-6 text-sm">{error}</p>
+                <button
+                  onClick={() => navigate('/')}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors"
+                >
+                  Go to login
+                </button>
+              </div>
+            ) : quizzes.length === 0 ? (
               <div className="px-6 py-12 text-center">
                 <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FaBook className="w-8 h-8 text-gray-400" />

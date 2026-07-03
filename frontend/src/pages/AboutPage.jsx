@@ -17,15 +17,14 @@ import {
 } from "react-icons/fa";
 import note2testLogo from "../assets/note2test_logo.png";
 import Navbar from "../components/Navbar";
+import { clearSession } from "../lib/api";
 
 export default function AboutPage() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || null;
 
   const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    localStorage.removeItem("user");
+    clearSession();
     navigate("/");
   };
 

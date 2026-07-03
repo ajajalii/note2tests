@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,6 +123,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': False,
 }
 
 # Your Google client ID for frontend validation (optional)

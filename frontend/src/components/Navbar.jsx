@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, UserRound, X } from 'lucide-react';
+import { LogOut, Menu, UserRound, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/notetotest.png';
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, handleLogout }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,13 +75,26 @@ const Navbar = ({ user }) => {
 
           <div className="hidden items-center justify-end gap-5 md:flex">
             {user && (
-              <Link
-                to="/profile"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 transition hover:bg-white/35 hover:text-slate-950"
-                aria-label="Profile"
-              >
-                <UserRound className="h-5 w-5" aria-hidden="true" />
-              </Link>
+              <div className="flex items-center gap-1">
+                <Link
+                  to="/profile"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 transition hover:bg-white/35 hover:text-slate-950"
+                  aria-label="Profile"
+                >
+                  <UserRound className="h-5 w-5" aria-hidden="true" />
+                </Link>
+                {handleLogout && (
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+                    aria-label="Logout"
+                    title="Logout"
+                  >
+                    <LogOut className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                )}
+              </div>
             )}
 
             <div
@@ -174,6 +187,19 @@ const Navbar = ({ user }) => {
                 >
                   <UserRound className="h-4 w-4" aria-hidden="true" />
                   {user.first_name || user.username}
+                </button>
+              )}
+              {user && handleLogout && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleLogout();
+                    closeMenu();
+                  }}
+                  className="flex items-center gap-2 rounded-xl px-4 py-3 text-left text-sm font-semibold text-red-700 transition-colors hover:bg-red-50"
+                >
+                  <LogOut className="h-4 w-4" aria-hidden="true" />
+                  Logout
                 </button>
               )}
               <button

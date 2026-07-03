@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { apiFetch, clearSession } from '../lib/api';
 
 export default function QuizPage() {
   const { id } = useParams();
@@ -20,9 +21,7 @@ export default function QuizPage() {
   const startTime = useRef(Date.now());
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    clearSession();
     navigate('/');
   };
   const [score, setScore] = useState(null);
@@ -38,7 +37,7 @@ export default function QuizPage() {
   useEffect(() => {
     async function fetchQuiz() {
       try {
-        const res = await fetch(` https://note2tests.onrender.com/api/quizzes/${id}/`);
+        const res = await apiFetch(`/api/quizzes/${id}/`);
         if (!res.ok) {
           const text = await res.text();
           setError(`Failed to fetch quiz: ${text}`);
@@ -84,7 +83,6 @@ export default function QuizPage() {
   if (!quiz) return;
 
   let score = 0;
-  const total = quiz.questions.length;
 
   quiz.questions.forEach((question, qIdx) => {
       const correctAnswer = question.answer;
