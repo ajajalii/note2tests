@@ -5,6 +5,7 @@ from api.views import google_login
 from api.views import user_quizzes
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from api.views import delete_quiz
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/upload/", upload_pdf, name="upload_pdf"),
