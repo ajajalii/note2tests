@@ -56,29 +56,29 @@ const LandingPage = () => {
       icon: FaUpload,
       title: "Easy Upload",
       description: "Upload PDF, DOC, or DOCX files with our intuitive drag-and-drop interface",
-      bgClass: "bg-blue-100",
-      iconClass: "text-blue-600"
+      bgClass: "bg-black/10",
+      iconClass: "text-black"
     },
     {
       icon: FaRobot,
       title: "AI-Powered",
       description: "Advanced AI generates relevant questions from your study materials",
-      bgClass: "bg-green-100",
-      iconClass: "text-green-600"
+      bgClass: "bg-black/10",
+      iconClass: "text-black"
     },
     {
       icon: FaChartLine,
       title: "Track Progress",
       description: "Monitor your performance and identify areas for improvement",
-      bgClass: "bg-sky-100",
-      iconClass: "text-sky-700"
+      bgClass: "bg-black/10",
+      iconClass: "text-black"
     },
     {
       icon: FaBookReader,
       title: "Interactive Learning",
       description: "Engage with your material through fun, interactive quizzes",
-      bgClass: "bg-slate-100",
-      iconClass: "text-slate-700"
+      bgClass: "bg-black/10",
+      iconClass: "text-black"
     }
   ];
 
@@ -228,7 +228,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
