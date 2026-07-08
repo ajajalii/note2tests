@@ -112,7 +112,7 @@ const LandingPage = () => {
       name: "Michael Park",
       role: "High School Teacher",
       content: "I use Note2Test to create practice quizzes for my students. It saves me hours of work and the students love the interactive format!",
-      avatar: "https://i.pravatar.cc/150?img=4"
+      avatar: "https://i.pravatar.cc/150?img=12"
     }
   ];
 
