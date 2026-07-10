@@ -5,6 +5,7 @@ from api.views import google_login
 from api.views import user_quizzes
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from api.views import delete_quiz
+from api.views import health_check
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/upload/", upload_pdf, name="upload_pdf"),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/delete-quiz/<int:quiz_id>/', delete_quiz, name='delete-quiz'),
+    path('api/health/', health_check, name='health-check'),
 ]

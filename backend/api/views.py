@@ -12,6 +12,12 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 from .models import Quiz
 
+def health_check(request):
+    return JsonResponse({
+        "status": "ok",
+        "service": "Note2Test Backend"
+    })
+
 
 def extract_pdf_text(file):
     """Reads a PDF file and returns its text."""
