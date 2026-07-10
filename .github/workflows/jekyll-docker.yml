@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Ping Note2Test Backend
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://note2tests.onrender.com/api/health )
+          response=$(curl -L -s -o /dev/null -w "%{http_code}" https://note2tests.onrender.com/api/health/)
           if [ "$response" -eq 200 ]; then
             echo "✅ Note2Test is up and running!"
           else
